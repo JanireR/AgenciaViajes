@@ -62,7 +62,7 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		bd = new BD();
 		bd.initBD("bd.sqlite");
 		try{
-			FileInputStream fis = new FileInputStream("viajes.dat");
+			FileInputStream fis = new FileInputStream("viajes.sql");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
 		}catch(FileNotFoundException e){
@@ -154,7 +154,7 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		if(botonPulsado == btnAadirViaje){
 			try
 			{
-				FileInputStream fis=new FileInputStream("Viajes.dat");
+				FileInputStream fis=new FileInputStream("viajes.sql");
 				ObjectInputStream ois=new ObjectInputStream(fis);
 				Vector<Viajes> v=new Vector<Viajes>();
 				Viajes vi = null;
@@ -176,7 +176,7 @@ public class vInformeViajes extends JFrame implements ActionListener {
 					}
 				}
 				ois.close();
-				FileOutputStream fos=new FileOutputStream("Viajes.dat");
+				FileOutputStream fos=new FileOutputStream("viajes.sql");
 				ObjectOutputStream oos=new ObjectOutputStream(fos);
 				Viajes nuevo = new Viajes(); //meter parametros de Viajes
 				v.add(nuevo);

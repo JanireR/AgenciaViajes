@@ -2,27 +2,33 @@ package clases;
 import java.io.*;
 public class Viajes {
 
-	
+	public int id;
 	public String nombreCiudadOrigen;
 	public String nombreCiudadDestino;
-	public String fechaInicio;
-	public String fechaFin;
+	public String fechaIda;
+	public String fechaVuelta;
 	
 	
 	public Viajes() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Viajes(String nombreCiudadOrigen, String nombreCiudadDestino,
-			String fechaInicio, String fechaFin) {
+	public Viajes(int id, String nombreCiudadOrigen, String nombreCiudadDestino,
+			String fechaIda, String fechaVuelta) {
 		super();
+		this.id = id;
 		this.nombreCiudadOrigen = nombreCiudadOrigen;
 		this.nombreCiudadDestino = nombreCiudadDestino;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
+		this.fechaIda = fechaIda;
+		this.fechaVuelta = fechaVuelta;
 	}
 	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNombreCiudadOrigen() {
 		return nombreCiudadOrigen;
 	}
@@ -35,17 +41,17 @@ public class Viajes {
 	public void setNombreCiudadDestino(String nombreCiudadDestino) {
 		this.nombreCiudadDestino = nombreCiudadDestino;
 	}
-	public String getFechaInicio() {
-		return fechaInicio;
+	public String getFechaIda() {
+		return fechaIda;
 	}
-	public void setFechaInicio(String fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setFechaIda(String fechaIda) {
+		this.fechaIda = fechaIda;
 	}
-	public String getFechaFin() {
-		return fechaFin;
+	public String getFechaVuelta() {
+		return fechaVuelta;
 	}
-	public void setFechaFin(String fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFechaVuelta(String fechaVuelta) {
+		this.fechaVuelta = fechaVuelta;
 	}
 	public void leerDeFichero(ObjectInputStream ois){}
 	public void escribirEnFichero(ObjectOutputStream oos){}
