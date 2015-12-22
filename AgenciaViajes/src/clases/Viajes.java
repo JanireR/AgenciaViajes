@@ -56,6 +56,12 @@ public class Viajes {
 	public void leerDeFichero(ObjectInputStream ois){}
 	public void escribirEnFichero(ObjectOutputStream oos){}
 	
+	
+	
+	public String toString(){
+		return " ID: " + id + " Ciudad Origen: "+ nombreCiudadOrigen + ", Ciudad Destino: "+ nombreCiudadDestino + ", Fecha ida: "+ fechaIda + ", Fecha vuelta: "+ fechaVuelta;
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
