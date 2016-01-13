@@ -1,9 +1,12 @@
+/*poner imagen principal
+ * */
 package ventanas;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -14,6 +17,7 @@ public class vPrincipal extends JFrame implements ActionListener{
 	private JMenuBar mb;
 	private JMenu menu1;
 	private JMenuItem m1, m2;
+	private JButton btnSalir;
 	
 	public vPrincipal(){
 		
@@ -45,8 +49,8 @@ public class vPrincipal extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		Container f=this.getContentPane();
         if (e.getSource()==m1) {
-        	vUsuario usuario = new vUsuario();
-       	 usuario.setVisible(true);
+        	vInformeViajes informe = new vInformeViajes();
+       	 	informe.setVisible(true);
         }
         if (e.getSource()==m2) {
         	vAdmin admin = new vAdmin();

@@ -61,7 +61,7 @@ public class BD {
 		public static void crearTablaBD() {
 			if (statement==null) return;
 			try {
-				statement.executeUpdate("create table viajes_bd " +
+				statement.executeUpdate("create table viajes " +
 					"(ciudadO string, ciudadD string, fechaI string" +
 					", fechaF string)");
 			} catch (SQLException e) {

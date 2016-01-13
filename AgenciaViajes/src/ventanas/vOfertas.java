@@ -70,7 +70,7 @@ public class vOfertas extends JFrame implements ActionListener{
 		contentPane.setBackground(new Color(175, 238, 238));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);		 
-		this.setSize(800,250);
+		this.setSize(700,250);
 		
 		
 		pnlTitulo = new JPanel();

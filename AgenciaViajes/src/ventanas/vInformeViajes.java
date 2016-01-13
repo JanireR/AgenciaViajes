@@ -1,3 +1,8 @@
+/*BD viajes
+ * Botones editar, eliminar y añadir SOLO para admin.
+ * El usuario solo podrá reservar un viaje o salir/cancelar.
+ * */
+
 package ventanas;
 
 import java.awt.EventQueue;
@@ -23,6 +28,7 @@ import clases.Viajes;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JList;
+import javax.swing.ImageIcon;
 
 
 
@@ -31,8 +37,12 @@ public class vInformeViajes extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;  // Para serialización
 	
-	JButton btnAadirViaje = new JButton("A\u00F1adir viaje");
-
+	JButton btnAadirViaje = new JButton("A\u00F1adir");
+	JButton btnEditar = new JButton("Editar");
+	JButton btnEliminar = new JButton("Eliminar");
+	JButton btnReservar = new JButton("Reservar");
+	JButton btnOfertas = new JButton("ofertas");
+	
 	private JPanel contentPane;
 	static BD bd;
 	JButton btnSalir = new JButton("Salir");
@@ -60,7 +70,7 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		});
 		
 		bd = new BD();
-		bd.initBD("bd.sqlite");
+		bd.initBD("viajes.sql");
 		try{
 			FileInputStream fis = new FileInputStream("viajes.sql");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -77,16 +87,16 @@ public class vInformeViajes extends JFrame implements ActionListener {
 	 */
 	public vInformeViajes() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 495, 350);
+		setBounds(100, 100, 511, 368);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		btnAadirViaje.setBounds(208, 11, 116, 23);
+		btnAadirViaje.setBounds(247, 11, 98, 23);
 		contentPane.add(btnAadirViaje);
 		
-		btnSalir.setBounds(355, 11, 89, 23);
+		btnSalir.setBounds(312, 295, 89, 23);
 		contentPane.add(btnSalir);
 		
 		JLabel lblInformeViajes = new JLabel("Informe Viajes");
@@ -120,12 +130,12 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		textField_2.setBounds(192, 165, 86, 20);
 		contentPane.add(textField_2);
 		
-		JLabel lblFechaInicio = new JLabel("Fecha Entrada");
+		JLabel lblFechaInicio = new JLabel("Fecha Ida");
 		lblFechaInicio.setBounds(86, 209, 83, 14);
 		contentPane.add(lblFechaInicio);
 		
-		JLabel lblFechaSalida = new JLabel("Fecha Salida");
-		lblFechaSalida.setBounds(86, 254, 72, 14);
+		JLabel lblFechaSalida = new JLabel("Fecha Vuelta");
+		lblFechaSalida.setBounds(86, 254, 83, 14);
 		contentPane.add(lblFechaSalida);
 		
 		textField_3 = new JTextField();
@@ -141,9 +151,29 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		JList listaViajes = new JList();
 		listaViajes.setBounds(10, 40, 60, 237);
 		contentPane.add(listaViajes);
+		
+		
+		btnEditar.setBounds(148, 11, 89, 23);
+		contentPane.add(btnEditar);
+		
+		
+		btnEliminar.setBounds(355, 11, 89, 23);
+		contentPane.add(btnEliminar);
+		
+		
+		btnReservar.setBounds(130, 295, 89, 23);
+		contentPane.add(btnReservar);
+		
+		
+		btnOfertas.setBounds(323, 126, 89, 23);
+		contentPane.add(btnOfertas);
 
 		btnAadirViaje.addActionListener(this);
 		btnSalir.addActionListener(this);
+		btnEditar.addActionListener(this);
+		btnEliminar.addActionListener(this);
+		btnReservar.addActionListener(this);
+		btnOfertas.addActionListener(this);
 	}
 
 	@Override
@@ -195,6 +225,18 @@ public class vInformeViajes extends JFrame implements ActionListener {
 				this.dispose();
 				vPrincipal principal= new vPrincipal();
 				principal.setVisible(true);
+			}else if(botonPulsado == btnEditar){
+				
+			}else if (botonPulsado == btnEliminar){
+				
+			}else if (botonPulsado == btnReservar){
+				this.dispose();
+				vUsuario usuario = new vUsuario();
+				usuario.setVisible(true);
+			}else if(botonPulsado == btnOfertas){
+				this.dispose();
+				vOfertas ofertas = new vOfertas();
+				ofertas.setVisible(true);
 			}
 		}
 	}
