@@ -1,4 +1,3 @@
-
 package ventanas;
 
 import java.awt.EventQueue;
@@ -11,13 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 
-
-
-
-
-
-
-import clases.BD;
 import clases.Viajes;
 
 import javax.swing.DefaultListSelectionModel;
@@ -32,21 +24,18 @@ import javax.swing.JTextPane;
 
 
 
-public class vInformeViajes extends JFrame implements ActionListener {
+public class vInformeViajesUsuario extends JFrame implements ActionListener {
+
+private static final long serialVersionUID = 1L;  // Para serialización
 	
-	private static final long serialVersionUID = 1L;  // Para serialización
 	
-	JButton btnAadirViaje = new JButton("A\u00F1adir");
-	JButton btnEditar = new JButton("Editar");
-	JButton btnEliminar = new JButton("Eliminar");
 	JButton btnReservar = new JButton("Reservar");
 	JButton btnOfertas = new JButton("");
 	JButton btnMostrarDatos = new JButton("Mostrar Datos");
 	
 	private JPanel contentPane;
-	static BD bd;
+	
 	JButton btnSalir = new JButton("Salir");
-	JButton btnOK = new JButton("OK");
 	private JList listaViajes;
 
 	
@@ -71,24 +60,13 @@ public class vInformeViajes extends JFrame implements ActionListener {
 			}
 		});
 		
-		bd = new BD();
-		//bd.initBD("viajes.sql");
-		bd.initBD("reservas.sqlite");
-		/*try{
-			FileInputStream fis = new FileInputStream("viajes.sql");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-		}catch(FileNotFoundException e){
-			System.out.print("El fichero no existe");
-			
-			
-		}*/
+		
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public vInformeViajes() {
+	public vInformeViajesUsuario() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 511, 368);
@@ -126,8 +104,7 @@ public class vInformeViajes extends JFrame implements ActionListener {
 	
 	
 		
-		btnAadirViaje.setBounds(329, 92, 89, 23);
-		contentPane.add(btnAadirViaje);
+		
 		
 		btnSalir.setBounds(381, 295, 89, 23);
 		contentPane.add(btnSalir);
@@ -141,12 +118,7 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		contentPane.add(listaViajes);
 		
 		
-		btnEditar.setBounds(329, 46, 89, 23);
-		contentPane.add(btnEditar);
 		
-		
-		btnEliminar.setBounds(329, 137, 89, 23);
-		contentPane.add(btnEliminar);
 		
 		
 		btnReservar.setBounds(252, 295, 89, 23);
@@ -165,49 +137,20 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		contentPane.add(textDatos);
 		
 		
-		btnOK.setBounds(434, 46, 51, 23);
-		contentPane.add(btnOK);
-		btnOK.setEnabled(false);
-		
-		
 
-		btnAadirViaje.addActionListener(this);
+		
 		btnSalir.addActionListener(this);
-		btnEditar.addActionListener(this);
-		btnEliminar.addActionListener(this);
 		btnReservar.addActionListener(this);
 		btnOfertas.addActionListener(this);
 		btnMostrarDatos.addActionListener(this);
-		btnOK.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		JButton botonPulsado = (JButton)e.getSource();
-		String datos;
-		if(botonPulsado == btnAadirViaje){
-			
-			}else if(botonPulsado == btnSalir){
-				this.dispose();
-				vPrincipal principal= new vPrincipal();
-				principal.setVisible(true);
-			}else if(botonPulsado == btnEditar){
-				
-				textDatos.setEditable(true);
-				btnOK.setEnabled(true);
-			}else if(botonPulsado==btnOK){				
-				datos=textDatos.getText();
-				textDatos.setText(datos);
-				System.out.println("datos cambiados" + datos);
-				for(int i=0; i<arrayviajes.length;i++){
-					if(arrayviajes[i].getId().equals(listaViajes.getSelectedValue())){
-						
-					}
-				}
-			}else if (botonPulsado == btnEliminar){
-				
-			}else if (botonPulsado == btnReservar){
+		
+		if (botonPulsado == btnReservar){
 				this.dispose();
 				vUsuario usuario = new vUsuario();
 				usuario.setVisible(true);
@@ -220,9 +163,8 @@ public class vInformeViajes extends JFrame implements ActionListener {
 					if(arrayviajes[i].getId().equals(listaViajes.getSelectedValue())){
 						System.out.println(arrayviajes[i].toString());
 						textDatos.setText(arrayviajes[i].toString());
-						textDatos.setEditable(false);
 					}
 				}
 			}
 		}
-	}
+}

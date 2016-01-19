@@ -24,6 +24,8 @@ import javax.swing.ListSelectionModel;
 
 
 
+
+import clases.Ofertas;
 import clases.Viajes;
 
 public class vOfertas extends JFrame implements ActionListener{
@@ -128,17 +130,17 @@ public class vOfertas extends JFrame implements ActionListener{
 
 	private void anyadirViajes() {
 		// TODO Auto-generated method stub
-		Viajes [] arrayViajes = new Viajes[10];
+		Ofertas [] arrayOfertas = new Ofertas[10];
 		
-		arrayViajes [0] = new Viajes(023, "Londres", "Santander", "15/12/2015","20/12/2015");
-		arrayViajes [1] = new Viajes(054, "Los Angeles", "New Zeland", "09/12/2015","19/12/2015");
-		arrayViajes [2] = new Viajes(074, "Londres", "Santander", "07/12/2015","10/12/2015");
-		arrayViajes [3] = new Viajes(013, "Fuerteventura", "Italia", "09/12/2015","19/12/2015");
-		arrayViajes [4] = new Viajes(004, "Roma", "Malta", "18/12/2015","26/12/2015");
-		arrayViajes [5] = new Viajes(040, "Malta", "Madrid", "16/12/2015","25/12/2015");
+		arrayOfertas [0] = new Ofertas("023", "Londres", "Santander", "15/12/2015","20/12/2015");
+		arrayOfertas [1] = new Ofertas("054", "Los Angeles", "New Zeland", "09/12/2015","19/12/2015");
+		arrayOfertas [2] = new Ofertas("074", "Londres", "Santander", "07/12/2015","10/12/2015");
+		arrayOfertas [3] = new Ofertas("013", "Fuerteventura", "Italia", "09/12/2015","19/12/2015");
+		arrayOfertas [4] = new Ofertas("004", "Roma", "Malta", "18/12/2015","26/12/2015");
+		arrayOfertas [5] = new Ofertas("040", "Malta", "Madrid", "16/12/2015","25/12/2015");
 		
 		
-		for(Viajes v: arrayViajes)
+		for(Viajes v: arrayOfertas)
 			((DefaultListModel<Viajes>) lstOfertas.getModel()).addElement(v);
 
 	}

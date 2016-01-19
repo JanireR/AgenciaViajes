@@ -4,10 +4,10 @@ import java.io.*;
 
 public class Usuario {
 
-	public String nombre;
-	public String apellido;
-	public String dni;
-	public String telefono;
+	public String Nombre;
+	public String Apellido;
+	public String Dni;
+	public String Telefono;
 
 	
 	
@@ -16,45 +16,45 @@ public class Usuario {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(String nombre, String apellido, String dni,
-			String telefono) {
+	public Usuario(String Nombre, String Apellido, String Dni,
+			String Telefono) {
 		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.telefono = telefono;
+		this.Nombre = Nombre;
+		this.Apellido = Apellido;
+		this.Dni = Dni;
+		this.Telefono = Telefono;
 	}
 
 	public String getNombre() {
-		return nombre;
+		return Nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String Nombre) {
+		this.Nombre = Nombre;
 	}
 
 	public String getApellido() {
-		return apellido;
+		return Apellido;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellido(String Npellido) {
+		this.Apellido = Apellido;
 	}
 
 	public String getDni() {
-		return dni;
+		return Dni;
 	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setDni(String Dni) {
+		this.Dni = Dni;
 	}
 
 	public String getTelefono() {
-		return telefono;
+		return Telefono;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setTelefono(String Telefono) {
+		this.Telefono = Telefono;
 	}
 
 	
@@ -64,7 +64,7 @@ public class Usuario {
 		
 	}
 	public String toString(){
-		return "Nombre: "+ nombre + "Apellido: "+ apellido + "DNI: "+ dni + "Telefono: "+ "telefono";
+		return "Nombre: "+ Nombre + "Apellido: "+ Apellido + "DNI: "+ Dni + "Telefono: "+ "Telefono";
 	}
 
 	public void leerDeFichero(ObjectInputStream ois){}

@@ -2,7 +2,7 @@ package clases;
 import java.io.*;
 public class Viajes {
 
-	public int id;
+	public String id;
 	public String nombreCiudadOrigen;
 	public String nombreCiudadDestino;
 	public String fechaIda;
@@ -13,7 +13,7 @@ public class Viajes {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Viajes(int id, String nombreCiudadOrigen, String nombreCiudadDestino,
+	public Viajes(String id, String nombreCiudadOrigen, String nombreCiudadDestino,
 			String fechaIda, String fechaVuelta) {
 		super();
 		this.id = id;
@@ -23,10 +23,10 @@ public class Viajes {
 		this.fechaVuelta = fechaVuelta;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNombreCiudadOrigen() {
@@ -59,7 +59,7 @@ public class Viajes {
 	
 	
 	public String toString(){
-		return " ID: " + id + " Ciudad Origen: "+ nombreCiudadOrigen + ", Ciudad Destino: "+ nombreCiudadDestino + ", Fecha ida: "+ fechaIda + ", Fecha vuelta: "+ fechaVuelta;
+		return " ID: " + id + "\n Ciudad Origen: "+ nombreCiudadOrigen + "\n Ciudad Destino: "+ nombreCiudadDestino + "\n Fecha ida: "+ fechaIda + "\n Fecha vuelta: "+ fechaVuelta;
 		
 	}
 	public static void main(String[] args) {
