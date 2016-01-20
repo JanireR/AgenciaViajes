@@ -1,4 +1,8 @@
-
+/*Ventana donde estan guardados 10 viajes y aparecerán todos sus datos al pinchar en mostrar Datos
+ * En caso de querer editar algun campo de un viaje, se mostraran los datos y pinchando en 'Editar' se hace,
+ * cuando se pulsa en este boton, el boton 'OK' se habilitará, y después de cambiar algún dato,se pulsará en dicho
+ * botón para terminar con los cambios
+ * */
 package ventanas;
 
 import java.awt.EventQueue;
@@ -13,20 +17,14 @@ import javax.swing.JLabel;
 
 
 
-
-
-
-
 import clases.BD;
 import clases.Viajes;
 
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 
@@ -36,23 +34,23 @@ public class vInformeViajes extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;  // Para serialización
 	
-	JButton btnAadirViaje = new JButton("A\u00F1adir");
+	//JButton btnAadirViaje = new JButton("A\u00F1adir");
 	JButton btnEditar = new JButton("Editar");
-	JButton btnEliminar = new JButton("Eliminar");
+	//JButton btnEliminar = new JButton("Eliminar");
 	JButton btnReservar = new JButton("Reservar");
 	JButton btnOfertas = new JButton("");
 	JButton btnMostrarDatos = new JButton("Mostrar Datos");
+	private final JTextPane textDatos = new JTextPane();
 	
 	private JPanel contentPane;
 	static BD bd;
 	JButton btnSalir = new JButton("Salir");
 	JButton btnOK = new JButton("OK");
-	private JList listaViajes;
+	private JList<?> listaViajes;
 
-	
+	//Crear array de viajes 
 	Viajes arrayviajes[]= new Viajes[10];
 	String viajesid[]= new String[10];
-	private final JTextPane textDatos = new JTextPane();
 	
 
 	/**
@@ -71,18 +69,10 @@ public class vInformeViajes extends JFrame implements ActionListener {
 			}
 		});
 		
-		bd = new BD();
-		//bd.initBD("viajes.sql");
-		bd.initBD("reservas.sqlite");
-		/*try{
-			FileInputStream fis = new FileInputStream("viajes.sql");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			
-		}catch(FileNotFoundException e){
-			System.out.print("El fichero no existe");
-			
-			
-		}*/
+//		bd = new BD();
+//		
+//		bd.initBD("reservas.sqlite");
+//		
 	}
 
 	/**
@@ -91,12 +81,13 @@ public class vInformeViajes extends JFrame implements ActionListener {
 	public vInformeViajes() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 511, 368);
+		setBounds(100, 100, 511, 323);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		ImageIcon icono= new ImageIcon("src/imagenes/vuelos.jpg");
+		this.setIconImage(icono.getImage());
 		
 		
 		//cargar los datos de los viajes
@@ -113,23 +104,21 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		arrayviajes[9]= new Viajes("010","Londres","Madrid","19/12/2015","25/12/2015");
 		
 		
-
+		
 		for(int j=0; j< viajesid.length;j++){
 			viajesid[j]= arrayviajes[j].getId();
-			listaViajes= new JList(viajesid);
+			listaViajes= new JList<Object>(viajesid);
 		}
 		
 	
 		JScrollPane pane = new JScrollPane(listaViajes);
 		DefaultListSelectionModel m = new DefaultListSelectionModel();
 	
-	
-	
+			
+//		btnAadirViaje.setBounds(329, 92, 89, 23);
+//		contentPane.add(btnAadirViaje);
 		
-		btnAadirViaje.setBounds(329, 92, 89, 23);
-		contentPane.add(btnAadirViaje);
-		
-		btnSalir.setBounds(381, 295, 89, 23);
+		btnSalir.setBounds(287, 238, 89, 23);
 		contentPane.add(btnSalir);
 		
 		JLabel lblInformeViajes = new JLabel("Informe Viajes");
@@ -145,16 +134,15 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		contentPane.add(btnEditar);
 		
 		
-		btnEliminar.setBounds(329, 137, 89, 23);
-		contentPane.add(btnEliminar);
+//		btnEliminar.setBounds(329, 137, 89, 23);
+//		contentPane.add(btnEliminar);
 		
-		
-		btnReservar.setBounds(252, 295, 89, 23);
+		btnReservar.setBounds(151, 238, 89, 23);
 		contentPane.add(btnReservar);
 		btnOfertas.setIcon(new ImageIcon(vInformeViajes.class.getResource("/imagenes/ofertas.jpg")));
 		
 		
-		btnOfertas.setBounds(101, 250, 141, 47);
+		btnOfertas.setBounds(308, 136, 141, 47);
 		contentPane.add(btnOfertas);
 		
 		
@@ -171,10 +159,10 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		
 		
 
-		btnAadirViaje.addActionListener(this);
+		//btnAadirViaje.addActionListener(this);
 		btnSalir.addActionListener(this);
 		btnEditar.addActionListener(this);
-		btnEliminar.addActionListener(this);
+		//btnEliminar.addActionListener(this);
 		btnReservar.addActionListener(this);
 		btnOfertas.addActionListener(this);
 		btnMostrarDatos.addActionListener(this);
@@ -186,14 +174,13 @@ public class vInformeViajes extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		JButton botonPulsado = (JButton)e.getSource();
 		String datos;
-		if(botonPulsado == btnAadirViaje){
-			
-			}else if(botonPulsado == btnSalir){
+//		if(botonPulsado == btnAadirViaje){
+//			}
+			if(botonPulsado == btnSalir){
 				this.dispose();
 				vPrincipal principal= new vPrincipal();
 				principal.setVisible(true);
-			}else if(botonPulsado == btnEditar){
-				
+			}else if(botonPulsado == btnEditar){ //Cuando se pulse el botón editar, se activará el 'OK'
 				textDatos.setEditable(true);
 				btnOK.setEnabled(true);
 			}else if(botonPulsado==btnOK){				
@@ -205,8 +192,8 @@ public class vInformeViajes extends JFrame implements ActionListener {
 						
 					}
 				}
-			}else if (botonPulsado == btnEliminar){
-				
+//			}else if (botonPulsado == btnEliminar){
+//				 }
 			}else if (botonPulsado == btnReservar){
 				this.dispose();
 				vUsuario usuario = new vUsuario();

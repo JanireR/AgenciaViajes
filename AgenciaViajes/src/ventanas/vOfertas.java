@@ -1,4 +1,5 @@
-/*Ventana de las ofertas disponibles */
+/*Ventana de las ofertas disponibles 
+ * */
 
 package ventanas;
 
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,9 +22,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
-
-
-
 
 
 import clases.Ofertas;
@@ -46,7 +45,6 @@ public class vOfertas extends JFrame implements ActionListener{
 	
 	private JButton btnReservar = new JButton ("Reservar");
 	private JButton btnSalir= new JButton("Salir");
-	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -73,7 +71,9 @@ public class vOfertas extends JFrame implements ActionListener{
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);		 
 		this.setSize(700,250);
-		
+		ImageIcon icono= new ImageIcon("src/imagenes/vuelos.jpg");
+
+	      this.setIconImage(icono.getImage());
 		
 		pnlTitulo = new JPanel();
 		pnlTitulo.setForeground(Color.gray);

@@ -1,3 +1,8 @@
+/*Venta de Administrador donde el usuario es: 'admin' y la contraseña es : 'pass'
+ * En caso de insertar mal los datos, saldra un mensaje de error
+ * */
+
+
 package ventanas;
 
 import java.awt.EventQueue;
@@ -57,6 +62,10 @@ public class vAdmin extends JFrame implements ActionListener{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		 ImageIcon icono= new ImageIcon("src/imagenes/vuelos.jpg");
+	        
+	        this.setIconImage(icono.getImage());
 		
 		JLabel lblBienvenido = new JLabel("\u00A1Bienvenido! ");
 		lblBienvenido.setHorizontalAlignment(SwingConstants.CENTER);

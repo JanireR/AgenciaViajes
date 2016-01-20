@@ -1,5 +1,8 @@
+/*Ventana final para terminar con la reserva donde deberá introducir datos personales
+ * */
 package ventanas;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -22,7 +25,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
-
 import clases.Usuario;
 
 public class vUsuario extends JFrame implements ActionListener{
@@ -32,9 +34,10 @@ public class vUsuario extends JFrame implements ActionListener{
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JTextField textField_4;
 	JButton btnReservar = new JButton("Reservar");
 	JButton btnSalir = new JButton("Salir");
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -63,6 +66,8 @@ public class vUsuario extends JFrame implements ActionListener{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		ImageIcon icono= new ImageIcon("src/imagenes/vuelos.jpg");
+		this.setIconImage(icono.getImage());
 		
 		this.getContentPane().setBackground(new Color(176, 224, 230));
 		
@@ -76,24 +81,24 @@ public class vUsuario extends JFrame implements ActionListener{
 		lblNombre.setBounds(33, 65, 65, 14);
 		contentPane.add(lblNombre);
 		
-		JLabel lblApellidos = new JLabel("Apellidos:");
-		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblApellidos.setBounds(199, 65, 84, 14);
-		contentPane.add(lblApellidos);
-		
 		textField = new JTextField();
 		textField.setBounds(33, 90, 126, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
+		JLabel lblApellidos = new JLabel("Apellidos:");
+		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblApellidos.setBounds(199, 65, 84, 14);
+		contentPane.add(lblApellidos);
+				
 		textField_1 = new JTextField();
 		textField_1.setBounds(197, 90, 126, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblDni = new JLabel("D.N.I:");
+		JLabel lblDni = new JLabel("Direccion:");
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDni.setBounds(33, 162, 46, 14);
+		lblDni.setBounds(33, 162, 126, 14);
 		contentPane.add(lblDni);
 		
 		textField_2 = new JTextField();
@@ -111,18 +116,23 @@ public class vUsuario extends JFrame implements ActionListener{
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
+		JLabel lblProvincia = new JLabel("Provincia:");
+		lblProvincia.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblProvincia.setBounds(353, 66, 84, 14);
+		contentPane.add(lblProvincia);
 		
-		btnReservar.setIcon(null);
+		textField_4 = new JTextField();
+		textField_4.setBounds(353, 90, 114, 20);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+		
+		
 		btnReservar.setForeground(Color.DARK_GRAY);
-		btnReservar.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnReservar.setBounds(55, 289, 152, 22);
+		btnReservar.setBounds(102, 269, 105, 23);
 		contentPane.add(btnReservar);
+				
 		btnSalir.setForeground(Color.DARK_GRAY);
-		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 13));
-		
-		
-		btnSalir.setIcon(null);
-		btnSalir.setBounds(310, 289, 89, 23);
+		btnSalir.setBounds(267, 269, 89, 23);
 		contentPane.add(btnSalir);
 		
 		btnReservar.addActionListener(this);
@@ -132,23 +142,24 @@ public class vUsuario extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		JButton botonPulsado=new JButton();
-		if(botonPulsado==btnSalir){
-			System.exit(0);
-		}
-		else if (botonPulsado==btnReservar) {
-			try{
-				FileInputStream fis = new FileInputStream("reservas.sqlite");
-				ObjectInputStream ois = new ObjectInputStream(fis);
-				Vector<Usuario> v= new Vector <Usuario>();
+		
+		JButton botonPulsado = (JButton)e.getSource();
+		if(botonPulsado==btnReservar)
+		{
+			try
+			{
+				FileInputStream fis=new FileInputStream("Reservas.dat");
+				ObjectInputStream ois=new ObjectInputStream(fis);
+				Vector<Usuario> v=new Vector<Usuario>();
 				Usuario u;
-				try{
-					u =(Usuario)ois.readObject();
-				
-				
-			}catch(Exception e0){
-				u=null;
-			}
+				try
+				{
+					u=(Usuario)ois.readObject();
+				}
+				catch(Exception e0)
+				{
+					u=null;
+				}
 				while(u!=null)
 				{
 					v.add(u);
@@ -162,9 +173,9 @@ public class vUsuario extends JFrame implements ActionListener{
 					}
 				}
 				ois.close();
-				FileOutputStream fos=new FileOutputStream("reservas.sqlite");
+				FileOutputStream fos=new FileOutputStream("Reservas.dat");
 				ObjectOutputStream oos=new ObjectOutputStream(fos);
-				Usuario nueva=new Usuario(textField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText());
+				Usuario nueva=new Usuario(textField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText(),textField_4.getText());
 				v.add(nueva);
 				for(int i=0;i<v.size();i++)
 					oos.writeObject(v.elementAt(i));
@@ -180,7 +191,12 @@ public class vUsuario extends JFrame implements ActionListener{
 			}
 			
 		}
+		else if(botonPulsado==btnSalir)
+		{
+			this.dispose();
+			vPrincipal principal= new vPrincipal();
+			principal.setVisible(true);
 		}
-		
+	}
 	}
 

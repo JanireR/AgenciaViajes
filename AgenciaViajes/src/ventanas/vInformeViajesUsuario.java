@@ -15,10 +15,8 @@ import clases.Viajes;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 
@@ -74,7 +72,9 @@ private static final long serialVersionUID = 1L;  // Para serialización
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		 ImageIcon icono= new ImageIcon("src/imagenes/vuelos.jpg");
+
+	      this.setIconImage(icono.getImage());
 		
 		
 		//cargar los datos de los viajes

@@ -5,9 +5,10 @@ import java.io.*;
 public class Usuario {
 
 	public String Nombre;
-	public String Apellido;
-	public String Dni;
+	public String Apellidos;
+	public String Direccion;
 	public String Telefono;
+	public String Provincia;
 
 	
 	
@@ -16,13 +17,14 @@ public class Usuario {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(String Nombre, String Apellido, String Dni,
-			String Telefono) {
+	public Usuario(String Nombre, String Apellidos, String Direccion,
+			String Telefono,String Provincia) {
 		super();
 		this.Nombre = Nombre;
-		this.Apellido = Apellido;
-		this.Dni = Dni;
+		this.Apellidos = Apellidos;
+		this.Direccion = Direccion;
 		this.Telefono = Telefono;
+		this.Provincia = Provincia;
 	}
 
 	public String getNombre() {
@@ -33,20 +35,20 @@ public class Usuario {
 		this.Nombre = Nombre;
 	}
 
-	public String getApellido() {
-		return Apellido;
+	public String getApellidos() {
+		return Apellidos;
 	}
 
-	public void setApellido(String Npellido) {
-		this.Apellido = Apellido;
+	public void setApellidos(String Apellidos) {
+		this.Apellidos = Apellidos;
 	}
 
-	public String getDni() {
-		return Dni;
+	public String getDireccion() {
+		return Direccion;
 	}
 
-	public void setDni(String Dni) {
-		this.Dni = Dni;
+	public void setDireccion(String Direccion) {
+		this.Direccion = Direccion;
 	}
 
 	public String getTelefono() {
@@ -56,15 +58,21 @@ public class Usuario {
 	public void setTelefono(String Telefono) {
 		this.Telefono = Telefono;
 	}
+		
+	public String getProvincia() {
+		return Provincia;
+	}
 
-	
-	
+	public void setProvincia(String provincia) {
+		Provincia = provincia;
+	}
+
 	public boolean validarDNI(String dni){
 		return false;
 		
 	}
 	public String toString(){
-		return "Nombre: "+ Nombre + "Apellido: "+ Apellido + "DNI: "+ Dni + "Telefono: "+ "Telefono";
+		return "Nombre: "+ Nombre + "Apellido: "+ Apellidos + "Direccion: "+ Direccion + "Telefono: "+ Telefono + "Provincia: "+ Provincia;
 	}
 
 	public void leerDeFichero(ObjectInputStream ois){}
